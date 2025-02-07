@@ -51,10 +51,10 @@ class GetAPI:
     Get information about a story given its ID
     Returns a dictionary
     """
-    def get_story_dict(self):
+    def get_story_dict(self, story=0):
         story_ids = self.get_new_stories()
         if story_ids:
-            url = f"{self.base_url}/item/{story_ids[0]}.json"
+            url = f"{self.base_url}/item/{story_ids[story]}.json"
             response = requests.get(url)
             if response.status_code == 200:
                 info = response.json()

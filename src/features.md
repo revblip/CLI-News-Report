@@ -10,3 +10,4 @@ List of completed features
     - filter article search with command line arguments
         1. Choose between "new", "best", and "top" stories with first argument
         2. Check if keyword is in title
+        3. Sift through stories until a title with a given keyword is found
