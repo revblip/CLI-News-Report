@@ -6,7 +6,8 @@ class GetAPI:
         self.base_url = base_url
         self.whitelist = whitelist
         self.new_stories_url = "newstories.json"
-        self.top_stories_url = ""
+        self.best_stories_url = "beststories.json"
+        self.top_stories_url = "topstories.json"
 
 
     """
@@ -22,6 +23,30 @@ class GetAPI:
             print("Failed to retrieve data")
 
 
+    """
+    Return a list of story IDs from the top stories on hacker-news
+    """
+    def get_top_stories(self):
+        url = f"{self.base_url}/{self.top_stories_url}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            ids = response.json()
+            return ids
+        else:
+            print("Failed to retrieve data")
+
+
+    """
+    Return a list of story IDs from the best stories on hacker-news
+    """
+    def get_best_stories(self):
+        url = f"{self.base_url}/{self.best_stories_url}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            ids = response.json()
+            return ids
+        else:
+            print("Failed to retrieve data")
     """
     Get information about a story given its ID
     Returns a dictionary
@@ -59,3 +84,4 @@ class GetAPI:
         print(f"Title = {title}")
         print(f"Author = {author}")
         print(f"Date = {date} (unix time)")
+        return title
