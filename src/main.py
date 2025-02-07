@@ -8,22 +8,28 @@ base_url = "https://hacker-news.firebaseio.com/v0/"
 # include all websites of type blog / article
 whitelist = []
 
+
+"""
+If there is no keyword, print a random story
+If there is a keyword, search through story titles until a title contains that keyword
+then print that story
+"""
 def print_story(node, story_ids, keyword=None):
     story = 0
     title = node.get_story_data(node.get_story_dict(story))
-    print(f"TEST {title}")
     if story_ids:
         if keyword:
             while keyword.lower() not in title.lower():
-                title = node.get_story_data(node.get_story_dict(story))
-                print(f"{keyword} is not in {title}")
                 story += 1
+                title = node.get_story_data(node.get_story_dict(story))
+            print()
+            node.get_story_data(node.get_story_dict(story))
         else:
-            print(node.get_story_dict(story))
-            print("\n")
-            print(node.get_story_content(node.get_story_dict()))
-            print("\n")
-            node.get_story_data(node.get_story_dict())
+           # print(node.get_story_dict(story))
+           # print("\n")
+           # print(node.get_story_content(node.get_story_dict()))
+           # print("\n")
+            node.get_story_data(node.get_story_dict(story))
 
 
 def main():
